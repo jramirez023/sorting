@@ -85,10 +85,12 @@ namespace Common
 
         public static bool IsPartitionCorrect(int[] A, int[] partition, int partitionStartIndex, int partitionEndIndex)
         {
+            if (partition == null)
+                return false;
             int partitionLength = partitionEndIndex - partitionStartIndex + 1;
-            if (partition.Length != partitionLength)
+            if (partition?.Length != partitionLength)
             {
-                Console.WriteLine($"Wrong partition size: {partition.Length} != {partitionLength}");
+                Console.WriteLine($"Wrong partition size: {partition?.Length} != {partitionLength}");
                 return false;
             }
             int partitionIndex = 0;

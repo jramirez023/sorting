@@ -9,7 +9,7 @@ namespace Common
         public int Partition(int[] A, int firstIndex, int lastIndex)
         {
             //TODO #1: Choose a pivot, move all elements lower than the pivot to the beginning of the array and return the position where the pivot has been moved to
-            int pivotPos = 0;
+            int pivotPos = -1;
 
             return pivotPos;
         }
@@ -39,6 +39,11 @@ namespace Common
                 int[] originalArray = Utils.Clone(array);
                 int sumBefore = Utils.Sum(array, 0, array.Length - 1);
                 int pivot = Partition(array, 0, array.Length - 1);
+                if (pivot < 0 || pivot > array.Length - 1)
+                {
+                    Console.WriteLine($"FAILED (Partition returned an invalid index: {pivot})");
+                    return false;
+                }
                 int pivotValue = array[pivot];
                 int sumAfter = Utils.Sum(array, 0, array.Length - 1);
                 if (sumBefore != sumAfter)
