@@ -6,15 +6,27 @@ namespace Common
 {
     public class SelectionSort : ISortingAlgorithm
     {
-        
-
         public void Sort(int[] A)
         {
             //TODO #1: Implement SelectionSort
 
-            
-        }
+            int length = A.Length;
 
+            for (int i = 0; i < length - 1; i++)
+            {
+
+                int min_in = i;
+                for (int j = i + 1; j < length; j++)
+                {
+                    if (A[j] < A[min_in])
+                        min_in = j;
+                }
+
+                Utils.Swap(A, min_in, i);
+            }
+
+
+        }
         public bool CheckIsCorrect()
         {
             int n = 10;
